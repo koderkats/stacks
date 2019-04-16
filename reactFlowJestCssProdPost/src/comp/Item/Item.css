@@ -1,0 +1,22 @@
+.Item {
+  display:flex;
+
+  color:green;
+  font-size:44px;  
+}
+
+.Item .message {
+  /* if -ms-flex-order:2 in inspector DOM then postcss-loader and autoprefixer are working */
+  order:2;
+  color:red;
+  background-color:blue;
+  font-size:24px;
+}
+
+/* if global styles then last word should be same */
+.end {
+  order:1; 
+  color:magenta;
+  font-size:50px;
+}
+
