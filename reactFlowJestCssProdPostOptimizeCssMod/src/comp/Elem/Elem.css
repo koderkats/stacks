@@ -1,0 +1,16 @@
+.comp {
+  color:red;
+  font-size:24px;
+}
+
+.message {
+  color:blue;
+  background-color:green;
+  font-size:44px;
+}
+
+/* if global styles then last word should be same */
+.end {
+  color:blue;
+  font-size:25px;
+}
