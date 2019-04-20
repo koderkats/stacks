@@ -7,7 +7,7 @@
     "build": "webpack --mode production --config webpack.prod.conf.js",
     "build:dev": "webpack  --mode development --config webpack.dev.conf.js",
     "start": "webpack-dev-server --config webpack.dev.conf.js --hot",
-    "flow": "flow",
+    "flow": "flow check ",
     "test": "jest"
   },
   "devDependencies": {
