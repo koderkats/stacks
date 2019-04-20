@@ -15,7 +15,10 @@ type Pops = {
 //   </div>
 // )
 
+
 const Item = (props: Props) => {
+
+console.log(s)
 
   return (
     <div className={s.comp + ' bob'} >

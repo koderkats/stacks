@@ -6,15 +6,8 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-// const postcss = require('postcss-loader')
 
 const webpack = require('webpack');
-
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEV__: false
-};
-
 
 const folder = {
   asset: path.resolve(__dirname, 'asset'),
@@ -22,18 +15,17 @@ const folder = {
 }
 
 module.exports = {
-  target: 'web',
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
-  },
-
   mode: 'production',
+  target: 'web',
   entry: ['./src/index.js'],
-
   output: {
     publicPath: './',
     path: folder.dist,
     filename: '[name].bundle.js',
+  },
+
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json']
   },
 
   module: {
@@ -43,73 +35,29 @@ module.exports = {
         test: /\.js$/,
         use: 'babel-loader',
       },
-
-
-      
       {
         test: /\.css$/,
         loader: 'style-loader',
       },
 
-      
-
-
-      // {
-      //   loader: 'css-loader',
-      //   options: {
-      //     minimize: true,
-      //     camelCase: 'dashes',
-      //     modules: true,
-      //     localIdentName: '[name]__[local]__[hash:base64:5]'
-      //   }
-      // },
-
-
-
       // {
       //   test: /\.css$/,
-      //   use: [
-      //     'style-loader',
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         minimize: true,
-      //         camelCase: 'dashes',
-      //         modules: true,
-      //         localIdentName: '[name]__[local]__[hash:base64:5]'
-      //       }
-      //     }
-
-      //   ]
+      //   use: [MiniCssExtractPlugin.loader]
       // },
-      
-
-
-
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader]
-      },
-
-
-
 
       {
         test: /\.css$/,
         loader: 'css-loader',
         query: {
           modules: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]'
+          // localIdentName: '[name]__[local]___[hash:base64:5]'
+          localIdentName: 'comp-[name]__[local]'
         }
       },
-
-
 
       {
         test: /\.css$/,
         use: [
-          // 'style-loader',
-          // 'css-loader',
           {
             loader: require.resolve('postcss-loader'),
             options: {
@@ -138,7 +86,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.DefinePlugin(GLOBALS),
     new CleanWebpackPlugin(),      
     new HtmlWebpackPlugin({
       template: 'src/index.html',
@@ -174,6 +121,4 @@ module.exports = {
     ]
   },
 
-
 }
-

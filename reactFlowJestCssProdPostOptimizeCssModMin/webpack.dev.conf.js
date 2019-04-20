@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const folder = {
   asset: path.resolve(__dirname, 'asset'),
@@ -11,7 +12,7 @@ const folder = {
 
 module.exports = {
   mode: 'development',
-
+  target: 'web',
   entry: ['./src/index.js'],
   output: {
     // publicPath: './',  // Required for: yarn build:dev
@@ -39,20 +40,26 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style-loader'
-      }, {
+      },
+
+      // {
+      //   test: /\.css$/,
+      //   use: [MiniCssExtractPlugin.loader]
+      // },
+
+      {
         test: /\.css$/,
         loader: 'css-loader',
         query: {
           modules: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]'
+          // localIdentName: '[name]__[local]___[hash:base64:5]'
+          localIdentName: 'comp-[name]__[local]'
         }
       },
 
       {
         test: /\.css$/,
         use: [
-          // 'style-loader',
-          // 'css-loader',
           {
             loader: require.resolve('postcss-loader'),
             options: {
@@ -79,7 +86,28 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      filename: 'index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+
   ],
 
   devServer: {
