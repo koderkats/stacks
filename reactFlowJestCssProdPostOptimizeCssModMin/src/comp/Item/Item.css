@@ -1,0 +1,32 @@
+.comp {
+  display:flex;
+
+  color:green;
+  font-size:44px;
+  justify-content:center;
+}
+
+.message {
+  /* if -ms-flex-order:2 in inspector DOM then postcss-loader and autoprefixer are working */
+  order:2;
+  color:red;
+  background-color:blue;
+  font-size:24px;
+}
+
+/* if spacing and newlines rendered in browser then css minifier not working */
+.end {
+  order:1; 
+
+
+
+
+
+
+
+
+  
+  color:                            magenta;
+  font-size:50px   ;
+}
+
