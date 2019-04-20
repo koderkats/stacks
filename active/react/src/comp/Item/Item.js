@@ -8,10 +8,17 @@ type Pops = {
   body: number,
 }
 
-const Item = (props: Props) => (
-  <div className={s.comp} >
-    <span>{props.title}</span> <span className={s.message}>{'test-message'}</span> <span>{props.body}</span> <span className={s.end}>hello</span>
-  </div>
-)
+const Item = (props: Props) => {
+
+  return (
+    <div className={s.comp} >
+      <span>{props.title}</span>
+      <span className={s.message}>{'test-message'}</span>
+      <span>{props.body}</span>
+      <span className={s.end}>hello</span>
+    </div>
+  )
+
+}
 
 export default Item

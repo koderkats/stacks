@@ -4,8 +4,8 @@
   "license": "GPL-1.0-only",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.conf.js",
-    "build:dev": "webpack --config webpack.dev.conf.js",
+    "build": "webpack --mode production --config webpack.prod.conf.js",
+    "build:dev": "webpack  --mode development --config webpack.dev.conf.js",
     "start": "webpack-dev-server --config webpack.dev.conf.js --hot",
     "flow": "flow",
     "test": "jest"
