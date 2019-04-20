@@ -10,8 +10,8 @@ import Item from './comp/Item/Item'
 
 const App = () => (
   <>
-    <Elem title="Elem" body="4321" />
-    <Item title="Item" body="1234" />
+    <Elem title="Elem" body={4321} />
+    <Item title="Item" body={1234} />
   </>
 )
 

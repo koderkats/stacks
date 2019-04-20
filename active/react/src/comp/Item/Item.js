@@ -3,7 +3,7 @@
 import React from 'react'
 import s from './Item.css'
 
-type Pops = {
+type Props = {
   title: string,
   body: number,
 }
